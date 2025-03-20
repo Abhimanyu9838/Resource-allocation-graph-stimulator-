@@ -1,0 +1,12 @@
+# Resource-allocation-graph-stimulator-
+
+from tkinter import Tk, Label, Button, Entry, StringVar, messagebox
+
+class ResourceAllocationGraphSimulator:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Resource Allocation Graph Simulator")
+        self.root.geometry("400x300")
+        
+        # Graph representation
+        self.graph = nx.DiGraph()
