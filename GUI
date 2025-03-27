@@ -1,5 +1,4 @@
-# Resource-allocation-graph-stimulator-
-
+# ====================== Module 2: GUI ======================
 from tkinter import Tk, Label, Button, Entry, StringVar, messagebox
 
 class ResourceAllocationGraphSimulator:
@@ -10,7 +9,8 @@ class ResourceAllocationGraphSimulator:
         
         # Graph representation
         self.graph = nx.DiGraph()
-# GUI components
+        
+        # GUI components
         Label(root, text="From Node (P/R):").grid(row=0, column=0, padx=10, pady=10)
         self.from_var = StringVar()
         Entry(root, textvariable=self.from_var).grid(row=0, column=1, padx=10, pady=10)
@@ -19,4 +19,30 @@ class ResourceAllocationGraphSimulator:
         self.to_var = StringVar()
         Entry(root, textvariable=self.to_var).grid(row=1, column=1, padx=10, pady=10)
         
+        Label(root, text="Edge Type (request/assignment):").grid(row=2, column=0, padx=10, pady=10)
+        self.edge_type_var = StringVar()
+        Entry(root, textvariable=self.edge_type_var).grid(row=2, column=1, padx=10, pady=10)
         
+        Button(root, text="Add Edge", command=self.add_edge).grid(row=3, column=0, columnspan=2, pady=10)
+        Button(root, text="Analyze Graph", command=self.analyze_graph).grid(row=4, column=0, columnspan=2, pady=10)
+    
+    def add_edge(self):
+        """
+        Adds an edge to the graph based on user input.
+        """
+        from_node = self.from_var.get()
+        to_node = self.to_var.get()
+        edge_type = self.edge_type_var.get()
+        
+        if from_node and to_node and edge_type:
+            if edge_type not in ["request", "assignment"]:
+                messagebox.showerror("Error", "Edge type must be 'request' or 'assignment'.")
+                return
+            
+            self.graph.add_edge(from_node, to_node, type=edge_type)
+            self.from_var.set("")
+            self.to_var.set("")
+            self.edge_type_var.set("")
+            messagebox.showinfo("Success", f"Edge added: {from_node} -> {to_node} ({edge_type})")
+        else:
+            messagebox.showerror("Error", "Please fill in all fields.")
