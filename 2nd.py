@@ -1,4 +1,5 @@
 # ====================== Module 3: Main ======================
+#code for the resource graph
 if __name__ == "__main__":
     root = Tk()
     app = ResourceAllocationGraphSimulator(root)
