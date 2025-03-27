@@ -1,0 +1,5 @@
+Overview
+
+The Resource Allocation Graph (RAG) Simulator is a Python-based GUI application that helps visualize and analyze
+resource allocation in a system. It allows users to add
+edges, represent resource requests and assignments, and detect potential deadlocks.
