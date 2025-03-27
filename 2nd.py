@@ -1,5 +1,8 @@
 # ====================== Module 3: Main ======================
 #code for the resource graph
+#This graph represents the high-level structure of the operating system."
+
+
 if __name__ == "__main__":
     root = Tk()
     app = ResourceAllocationGraphSimulator(root)
